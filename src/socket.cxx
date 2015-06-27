@@ -5,20 +5,11 @@
 
 Socket::Socket(int _sockfd):
 	sockfd(_sockfd),
-	filebuf(_sockfd,std::ios::in|std::ios::out),
-	io(&filebuf)
+	filebufi(_sockfd,std::ios::in),
+	filebufo(_sockfd,std::ios::out),
+	is(&filebufi),
+	os(&filebufo)
 {}
 Socket::~Socket(){
 	close(sockfd);
-}
-
-template <typename T>
-Socket& Socket::operator<<(T& input){
-	io<<input;
-	return *this;
-}
-template <typename T>
-Socket& Socket::operator>>(T& output){
-	io>>output;
-	return *this;
 }

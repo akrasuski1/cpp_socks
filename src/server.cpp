@@ -6,15 +6,23 @@
 class ExHandler{
 public:
 	ExHandler(std::unique_ptr<Socket> _sock): 
+		out(_sock->os),
+		in(_sock->is),
 		sock(std::move(_sock))
 	{}
 	void handle(){
+		out<<"Hello"<<std::endl;
 		int a,b;
-		*sock>>a>>b;
-		printf("Here is the message: %d %d\n",a,b);
-		*sock<<"I got this";
+		in>>a>>b;
+		out<<"I got this"<<a<<b<<std::endl;
+		std::string str;
+		getline(in,str);
+		getline(in,str);
+		out<<str<<std::endl;
 	}
 private:
+	std::ostream& out;
+	std::istream& in;
 	std::unique_ptr<Socket> sock;
 };
 
