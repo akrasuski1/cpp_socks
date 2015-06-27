@@ -9,18 +9,10 @@ public:
 		sock(std::move(_sock))
 	{}
 	void handle(){
-		printf("%d\n",sock->sockfd);
 		char buffer[256];
-		bzero(buffer,256);
-		int n = read(sock->sockfd,buffer,255);
-		if (n < 0){
-			throw SocketException("ERROR reading from socket");
-		}
+		*sock>>buffer;
 		printf("Here is the message: %s\n",buffer);
-		n = write(sock->sockfd,"I got your message",18);
-		if (n < 0){
-			throw SocketException("ERROR writing to socket");
-		}
+		*sock<<"I got this";
 	}
 private:
 	std::unique_ptr<Socket> sock;
