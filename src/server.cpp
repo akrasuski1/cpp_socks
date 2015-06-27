@@ -1,13 +1,4 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <sys/types.h> 
 #include <unistd.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <string>
-#include <thread>
-#include <memory>
 #include "tcpserver.h"
 #include "socket.h"
 
