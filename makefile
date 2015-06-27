@@ -1,17 +1,23 @@
-BINARY  = server
-CC      = g++
-CFLAGS  = -pthread -std=c++14
-FILES   = $(shell find . -name "*.cpp")
-HEADERS = $(shell find . -name "*.h")
-OBJS    = $(FILES:.cpp=.o)
-	 
-all: $(BINARY)
+CC := g++
+SRCDIR := src
+BUILDDIR := build
+TARGET := bin/server
+ 
+SRCEXT := cpp
+SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+CFLAGS := -std=c++14
+LIB := -pthread
+INC := -I include
 
-${BINARY}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${BINARY}
+$(TARGET): $(OBJECTS)
+	echo " Linking..."
+	$(CC) $^ -o $(TARGET) $(LIB)
 
-%.o: %.cpp
-	${CC} ${CFLAGS} -c $< -o $@
+$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	mkdir -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
-	rm -f ${BINARY} ${OBJS}
+	echo " Cleaning..."; 
+	$(RM) -r $(BUILDDIR) $(TARGET)
