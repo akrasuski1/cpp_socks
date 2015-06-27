@@ -5,6 +5,7 @@ class ExHandler: public Handler{
 public:
 	using Handler::Handler;
 	void handle(){
+		std::cout<<"Connected to: "<<ip_address<<" at port "<<port<<std::endl;
 		set_timeout(30.0);
 		out<<"Hello"<<std::endl;
 		int a,b;

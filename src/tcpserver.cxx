@@ -2,6 +2,7 @@
 #include <netinet/in.h>
 #include <thread>
 #include <memory>
+#include <arpa/inet.h>
 #include "socket.h"
 #include "socketexception.h"
 
@@ -34,7 +35,11 @@ template <typename Handler> void TCPServer<Handler>::serve(){
 		}
 		
 		std::thread([&]{
-			Handler handler(std::make_unique<Socket>(newsockfd));
+			char buff[INET_ADDRSTRLEN];
+			int port=ntohs(cli_addr.sin_port);
+			inet_ntop(AF_INET, &(cli_addr.sin_addr), buff, INET_ADDRSTRLEN);
+			std::string ip(buff);
+			Handler handler(std::make_unique<Socket>(newsockfd), ip, port);
 			handler.handle();
 		}).detach();
 	}
