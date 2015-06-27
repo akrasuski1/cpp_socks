@@ -7,10 +7,11 @@ public:
 	void handle(){
 		std::cout<<"Connected to: "<<ip_address<<" at port "<<port<<std::endl;
 		set_timeout(30.0);
-		out<<"Hello"<<std::endl;
+		out<<"Hello there! Type two integers now."<<std::endl;
 		int a,b;
 		in>>a>>b;
-		out<<"I got this"<<a<<b<<std::endl;
+		out<<"Thanks. Here is their sum: "<<a+b<<std::endl;
+		out<<"Now I'll just echo your line of text."<<std::endl;
 		std::string str;
 		getline(in,str);
 		getline(in,str);
