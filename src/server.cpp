@@ -9,9 +9,9 @@ public:
 		sock(std::move(_sock))
 	{}
 	void handle(){
-		char buffer[256];
-		*sock>>buffer;
-		printf("Here is the message: %s\n",buffer);
+		int a,b;
+		*sock>>a>>b;
+		printf("Here is the message: %d %d\n",a,b);
 		*sock<<"I got this";
 	}
 private:

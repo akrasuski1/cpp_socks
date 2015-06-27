@@ -13,8 +13,8 @@ public:
 	template <typename T>
 	Socket& operator>>(T& output);
 
-	int sockfd;
 private:
+	int sockfd;
 	void readsome();
 	std::string buffer;
 	std::stringstream ss;
