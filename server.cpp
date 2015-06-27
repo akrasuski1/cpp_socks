@@ -9,31 +9,8 @@
 #include <thread>
 #include <memory>
 #include "tcpserver.h"
+#include "socket.h"
 
-class Socket{
-public:
-	Socket(int _sockfd):
-		sockfd(_sockfd)
-	{printf("Socket\n");}
-		
-	~Socket(){
-		printf("~Socket\n");
-		close(sockfd);
-	}
-	int sockfd;
-};
-
-class SocketException: public std::exception{
-public:
-	SocketException(std::string _reason):
-		reason(_reason)
-	{}
-	const char* what() const noexcept{
-		return reason.c_str();
-	}
-private:
-	std::string reason;
-};
 
 class ExHandler{
 public:
