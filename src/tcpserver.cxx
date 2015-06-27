@@ -3,6 +3,7 @@
 #include <thread>
 #include <memory>
 #include "socket.h"
+#include "socketexception.h"
 
 template <typename Handler> TCPServer<Handler>::TCPServer (int _port):
 	port(_port)

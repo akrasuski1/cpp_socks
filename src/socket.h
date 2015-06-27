@@ -4,7 +4,6 @@
 #include <istream>
 #include <ostream>
 #include <ext/stdio_filebuf.h>
-#include "socketexception.h"
 
 class Socket{
 public:
