@@ -10,6 +10,6 @@ private:
 	int port;
 };
 
-#include "tcpserver.cpp"
+#include "tcpserver.cxx"
 
 #endif
