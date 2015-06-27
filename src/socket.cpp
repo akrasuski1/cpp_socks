@@ -1,6 +1,4 @@
 #include <unistd.h>
-#include <cstdio>
-#include <ext/stdio_filebuf.h>
 #include "socket.h"
 
 Socket::Socket(int _sockfd):

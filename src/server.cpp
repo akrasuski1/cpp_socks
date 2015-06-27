@@ -1,15 +1,8 @@
-#include <unistd.h>
 #include "tcpserver.h"
-#include "socket.h"
 
-
-class ExHandler{
+class ExHandler: public Handler{
 public:
-	ExHandler(std::unique_ptr<Socket> _sock): 
-		out(_sock->os),
-		in(_sock->is),
-		sock(std::move(_sock))
-	{}
+	using Handler::Handler;
 	void handle(){
 		out<<"Hello"<<std::endl;
 		int a,b;
@@ -20,10 +13,6 @@ public:
 		getline(in,str);
 		out<<str<<std::endl;
 	}
-private:
-	std::ostream& out;
-	std::istream& in;
-	std::unique_ptr<Socket> sock;
 };
 
 

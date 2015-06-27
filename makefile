@@ -11,13 +11,13 @@ LIB := -pthread
 INC := -I include
 
 $(TARGET): $(OBJECTS)
-	echo " Linking..."
+	@echo " Linking..."
 	$(CC) $^ -o $(TARGET) $(LIB)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
-	mkdir -p $(BUILDDIR)
+	@mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
-	echo " Cleaning..."; 
+	@echo " Cleaning..."; 
 	$(RM) -r $(BUILDDIR) $(TARGET)

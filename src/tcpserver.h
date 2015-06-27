@@ -1,6 +1,8 @@
 #ifndef TCPSERVER_INCLUDED
 #define TCPSERVER_INCLUDED
 
+#include "handler.h"
+
 template <class Handler>
 class TCPServer{
 public:

@@ -18,6 +18,4 @@ private:
 	__gnu_cxx::stdio_filebuf<char> filebufi, filebufo;
 };
 
-#include "socket.cxx"
-
 #endif
