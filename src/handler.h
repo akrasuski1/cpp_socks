@@ -11,6 +11,7 @@ public:
 	Handler(std::unique_ptr<Socket> _sock);
 	virtual void handle()=0;
 protected:
+	void set_timeout(double timeout);
 	std::ostream& out;
 	std::istream& in;
 private:

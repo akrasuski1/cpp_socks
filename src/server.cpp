@@ -1,9 +1,11 @@
+#include <iostream>
 #include "tcpserver.h"
 
 class ExHandler: public Handler{
 public:
 	using Handler::Handler;
 	void handle(){
+		set_timeout(30.0);
 		out<<"Hello"<<std::endl;
 		int a,b;
 		in>>a>>b;

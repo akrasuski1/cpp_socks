@@ -9,6 +9,7 @@ class Socket{
 public:
 	Socket(int _sockfd);
 	~Socket();
+	void set_timeout(double timeout);
 
 	std::istream is;
 	std::ostream os;
